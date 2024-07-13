@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import "./styles.css";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import { MdKeyboardVoice } from "react-icons/md";
 
 
 interface props {
@@ -15,8 +16,7 @@ const InputField: React.FC<props> = ({ todo, setTodo, handleAdd }) => {
 
 
   const handleVoiceAdd = () => {
-    console.log('Clicked ');
-    console.log("trans=>" +transcript);
+    SpeechRecognition.startListening({ continuous: true })
     if (transcript) {
       console.log(transcript);
       setTodo(transcript);
@@ -25,12 +25,12 @@ const InputField: React.FC<props> = ({ todo, setTodo, handleAdd }) => {
   };
 
 
+
   return (
     <form
       className="input"
       onSubmit={(e) => {
         handleAdd(e);
-        handleVoiceAdd();
         inputRef.current?.blur();
       }}
     >
@@ -49,9 +49,9 @@ const InputField: React.FC<props> = ({ todo, setTodo, handleAdd }) => {
       <button
         type="button"
         className="input_voice"
-        onClick={() => SpeechRecognition.startListening({ continuous: true })}
+        onClick={handleVoiceAdd}
       >
-        Speak
+        <MdKeyboardVoice className="icon_voice"/>
       </button>
       
       

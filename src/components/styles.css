@@ -82,7 +82,7 @@
   flex-direction: column;
   width: 47.5%;
   padding: 15px;
-  background-color: rgb(232, 81, 112);
+  background-color: rgb(140, 42, 62);
 }
 
 .dragactive {
@@ -90,11 +90,17 @@
 }
 
 .dragcomplete {
-  background-color: rgb(102, 255, 0);
+  background-color: rgb(143, 240, 79);
 }
 
 .remove {
-  background-color: rgb(80, 235, 80);
+  background-color: rgb(26, 169, 26);
+}
+
+.icon_voice {
+  margin-left: 0px;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 .todos__heading {
