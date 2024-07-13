@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 import "./styles.css";
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+
 
 interface props {
   todo: string;
@@ -9,6 +11,19 @@ interface props {
 
 const InputField: React.FC<props> = ({ todo, setTodo, handleAdd }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { transcript, resetTranscript } = useSpeechRecognition();
+
+
+  const handleVoiceAdd = () => {
+    console.log('Clicked ');
+    console.log("trans=>" +transcript);
+    if (transcript) {
+      console.log(transcript);
+      setTodo(transcript);
+      resetTranscript();
+    }
+  };
+
 
   return (
     <form
@@ -28,6 +43,20 @@ const InputField: React.FC<props> = ({ todo, setTodo, handleAdd }) => {
       />
       <button type="submit" className="input_submit">
         GO
+      </button>
+      <button
+        type="button"
+        className="input_voice"
+        onClick={() => SpeechRecognition.startListening({ continuous: true })}
+      >
+        Voice
+      </button>
+      <button
+        type="button"
+        className="input_voice"
+        onClick={handleVoiceAdd}
+      >
+        Add Task
       </button>
     </form>
   );
