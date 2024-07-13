@@ -30,6 +30,7 @@ const InputField: React.FC<props> = ({ todo, setTodo, handleAdd }) => {
       className="input"
       onSubmit={(e) => {
         handleAdd(e);
+        handleVoiceAdd();
         inputRef.current?.blur();
       }}
     >
@@ -44,20 +45,16 @@ const InputField: React.FC<props> = ({ todo, setTodo, handleAdd }) => {
       <button type="submit" className="input_submit">
         GO
       </button>
+
       <button
         type="button"
         className="input_voice"
         onClick={() => SpeechRecognition.startListening({ continuous: true })}
       >
-        Voice
+        Speak
       </button>
-      <button
-        type="button"
-        className="input_voice"
-        onClick={handleVoiceAdd}
-      >
-        Add Task
-      </button>
+      
+      
     </form>
   );
 };

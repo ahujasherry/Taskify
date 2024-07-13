@@ -44,6 +44,30 @@
   box-shadow: 0 0 5px black;
 }
 
+.input_voice {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: 12px;
+  border-radius: 50px;
+  right: 60px;
+  border: none;
+  font-size: 15px;
+  background-color: #1268cb;
+  color: white;
+  transition: 0.2s all;
+  box-shadow: 0 0 10px black;
+}
+
+.input_voice:hover {
+  background-color: #d438e2;
+}
+
+.input_voice:active {
+  transform: scale(0.8);
+  box-shadow: 0 0 5px black;
+}
+
 .container {
   width: 95%;
   display: flex;
